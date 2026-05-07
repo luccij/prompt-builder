@@ -290,7 +290,9 @@
           </div>
         </div>
 
-        <div id="whyBox" class="mt-4 hidden rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm leading-6 text-blue-950"></div>
+        <div id="selectedPromptBadge" class="mt-4 hidden rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm leading-6 text-slate-700"></div>
+
+        <div id="whyBox" class="mt-3 hidden rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm leading-6 text-blue-950"></div>
 
         <form id="dynamicFields" class="mt-5 space-y-4"></form>
 
@@ -906,7 +908,7 @@ Tier 3: a checklist of required grammar points, vocabulary themes, evidence move
         id: "chunking", category: "Support & Scaffold", title: "Chunking", sourcePath: "Material Generation → Scaffolding & Support Materials",
         bestFor: "Making a dense text more accessible through sections and checks for understanding.",
         why: "Chunking reduces cognitive load by giving students smaller units of meaning and a chance to check comprehension before moving on.",
-        fields: [{id:"textType",label:"Text students will read",placeholder:"e.g., article, primary source, textbook section, transcript, short story"},{id:"chunkCount",label:"How many sections to create",placeholder:"e.g., 3 sections, 4 sections, let AI decide based on meaning"},{id:"checkType",label:"Comprehension check format",placeholder:"e.g., true/false + multiple choice; one recall and one inference question"}],
+        fields: [{id:"textType",label:"Text students will read",placeholder:"Paste the text if you have it, or briefly describe it, e.g., article, primary source, textbook section, transcript, short story",type:"textarea"},{id:"chunkCount",label:"How many sections to create",placeholder:"e.g., 3 sections, 4 sections, let AI decide based on meaning"},{id:"checkType",label:"Comprehension check format",placeholder:"e.g., true/false + multiple choice; one recall and one inference question"}],
         followUp: "Review the chunks for cognitive load. Make sure each section has a clear conceptual purpose, not just an arbitrary length break.",
         text: `I have a text related to the topic described in my context that I want to make accessible.
 
@@ -1096,7 +1098,7 @@ Create a Peer Feedback Protocol:
         id: "polishing-tone", category: "Reflect & Communicate", title: "Polishing Tone", sourcePath: "Coaching & Feedback → Formative Feedback & Tone",
         bestFor: "Rewriting feedback or communication while preserving evidence and meaning.",
         why: "Tone revision is most useful when it preserves the teacher’s evidence and judgment. Clear constraints improve wording without turning specific feedback into generic praise.",
-        fields: [{id:"purpose",label:"What the draft comment is for",placeholder:"e.g., feedback on a paragraph, note to a class, email to families"},{id:"toneConcern",label:"What feels off about the current tone",placeholder:"e.g., too harsh, too informal, too long, clunky, too vague"},{id:"targetTone",label:"Tone you want instead",placeholder:"e.g., warm but professional, concise and objective, firm but kind"}],
+        fields: [{id:"purpose",label:"What the draft comment is for",placeholder:"e.g., feedback on a paragraph, note to a class, email to families"},{id:"toneConcern",label:"What feels off about the current tone",placeholder:"e.g., too harsh, too informal, too long, clunky, too vague"},{id:"targetTone",label:"Tone you want instead",placeholder:"e.g., warm but professional, concise and objective, firm but kind"},{id:"draftText",label:"Draft text to revise",placeholder:"Paste your draft here without student names or personally identifiable information.",type:"textarea"}],
         followUp: "Give me three alternate versions with different tones: warmer, more concise, and more direct. After each version, briefly explain what changed while confirming no new claims were added.",
         text: `I have written a draft comment for {{purpose}}. It captures the right data, but the tone feels {{toneConcern}}.
 
@@ -1109,13 +1111,16 @@ Strict constraints:
 - Shorten by 20%.
 - Do not include student names or personally identifiable information.
 
-My Draft: [Paste Draft — NO STUDENT NAMES OR PERSONALLY IDENTIFIABLE INFORMATION]`
+My Draft:
+{{draftText}}
+
+Do not include student names or personally identifiable information.`
       },
       {
         id: "growth-mindset", category: "Reflect & Communicate", title: "Growth Mindset Reframing", sourcePath: "Coaching & Feedback → Formative Feedback & Tone",
         bestFor: "Making critical feedback future-focused without softening the standard.",
         why: "Growth-oriented feedback names the gap clearly while emphasizing strategies, actions, and next steps rather than fixed ability.",
-        fields: [{id:"struggle",label:"Skill or behavior that needs growth",placeholder:"e.g., evidence use, computation accuracy, reading fluency, preparation habits"},{id:"audience",label:"Who the feedback is for",placeholder:"e.g., student, parents/guardians, advisee, whole class"},{id:"tone",label:"Tone goal",placeholder:"e.g., warm, clear, future-focused, honest but encouraging"}],
+        fields: [{id:"struggle",label:"Skill or behavior that needs growth",placeholder:"e.g., evidence use, computation accuracy, reading fluency, preparation habits"},{id:"audience",label:"Who the feedback is for",placeholder:"e.g., student, parents/guardians, advisee, whole class"},{id:"tone",label:"Tone goal",placeholder:"e.g., warm, clear, future-focused, honest but encouraging"},{id:"draftText",label:"Draft feedback to reframe",placeholder:"Paste your draft here without student names or personally identifiable information.",type:"textarea"}],
         followUp: "Make the rewrite more honest and specific. Ensure it still clearly communicates the missed standard while avoiding permanent labels about ability.",
         text: `I need to give critical feedback related to the topic described in my context.
 
@@ -1125,7 +1130,10 @@ Tone: {{tone}}
 
 Review my draft feedback below. Identify 1-2 phrases that could sound fixed-mindset or punitive. Suggest rewrites that focus on actions or strategies the student can change next time. Do not change the core critique.
 
-My Draft: [Paste Draft — NO STUDENT NAMES OR PERSONALLY IDENTIFIABLE INFORMATION]`
+My Draft:
+{{draftText}}
+
+Do not include student names or personally identifiable information.`
       },
       {
         id: "trend-analysis", category: "Assess & Respond", title: "Trend Analysis", sourcePath: "Coaching & Feedback → Analysis & Adjustment",
@@ -1145,7 +1153,7 @@ Group these errors into conceptual patterns. Are they mostly logic errors, memor
         id: "rubric-alignment", category: "Assess & Respond", title: "Rubric Alignment", sourcePath: "Coaching & Feedback → Analysis & Adjustment",
         bestFor: "Checking that a rubric matches what students were actually asked to do.",
         why: "Alignment checks protect fairness by catching criteria that were never taught, never assigned, or missing from the rubric.",
-        fields: [{id:"assignmentPrompt",label:"Assignment directions",placeholder:"Paste or summarize what students were asked to do"},{id:"rubricCriteria",label:"Rubric criteria",placeholder:"Paste or summarize the criteria you plan to grade"},{id:"concern",label:"Specific alignment concern",placeholder:"e.g., grading formatting even though it was not assigned; missing evidence criterion"}],
+        fields: [{id:"assignmentPrompt",label:"Assignment directions",placeholder:"Paste the directions, or summarize what students were asked to do",type:"textarea"},{id:"rubricCriteria",label:"Rubric criteria",placeholder:"Paste the criteria, or summarize what you plan to grade",type:"textarea"},{id:"concern",label:"Specific alignment concern",placeholder:"e.g., grading formatting even though it was not assigned; missing evidence criterion"}],
         followUp: "Revise the rubric so every criterion can be traced directly to the assignment prompt. Flag any criterion that should become feedback rather than a grade.",
         text: `I am about to grade an assessment on the topic described in my context and want to ensure my rubric aligns with the assignment instructions.
 
@@ -1159,7 +1167,7 @@ Compare the assignment prompt with the rubric criteria. Identify any rubric crit
         id: "notes-synthesis", category: "Assess & Respond", title: "Notes Synthesis", sourcePath: "Coaching & Feedback → Analysis & Adjustment",
         bestFor: "Turning rough grading notes into a clear class announcement.",
         why: "Synthesis helps teachers communicate patterns without adding fluff or changing the meaning of feedback.",
-        fields: [{id:"rawNotes",label:"Rough grading notes",placeholder:"e.g., citation errors, strong theses, formatting reminders, common strengths"},{id:"audience",label:"Where this will be posted or shared",placeholder:"e.g., class announcement, LMS post, email, handout"},{id:"tone",label:"Tone goal",placeholder:"e.g., concise, direct, supportive, matter-of-fact"}],
+        fields: [{id:"rawNotes",label:"Rough grading notes",placeholder:"Paste rough notes or list patterns, e.g., citation errors, strong theses, formatting reminders, common strengths",type:"textarea"},{id:"audience",label:"Where this will be posted or shared",placeholder:"e.g., class announcement, LMS post, email, handout"},{id:"tone",label:"Tone goal",placeholder:"e.g., concise, direct, supportive, matter-of-fact"}],
         followUp: "Tighten the announcement so it is shorter and more actionable. Remove any advice that was not present in my original notes.",
         text: `I have finished grading an assessment on the topic described in my context and have raw notes to turn into something more coherent.
 
@@ -1173,7 +1181,7 @@ Format my notes into a clean Class Announcement. Do not add new advice or fluff.
         id: "leveled-text", category: "Support & Scaffold", title: "Leveled Text Generator", sourcePath: "Lower School → Curriculum Differentiation & Scaffolding",
         bestFor: "Rewriting the same passage at several reading levels while preserving the same core content.",
         why: "Leveled versions can support varied decoding needs while keeping the whole class in conversation about the same ideas.",
-        fields: [{id:"originalText",label:"Original passage or source",placeholder:"Paste the text, or briefly describe the passage if you will paste it later"},{id:"levels",label:"Reading levels needed",placeholder:"e.g., below/on/above grade level; Lexile ranges if known"},{id:"constraints",label:"What must stay the same",placeholder:"e.g., facts, names, sequence of events, vocabulary students must discuss"}],
+        fields: [{id:"originalText",label:"Original passage or source",placeholder:"Paste the text if you have it, or briefly describe the passage if you will paste it later",type:"textarea"},{id:"levels",label:"Reading levels needed",placeholder:"e.g., below/on/above grade level; Lexile ranges if known"},{id:"constraints",label:"What must stay the same",placeholder:"e.g., facts, names, sequence of events, vocabulary students must discuss"}],
         followUp: "Check the three versions for content equivalence. Identify any fact, idea, or name that changed across versions and revise so only the reading level changes.",
         text: `I have a core reading passage for the class described in my context, but students have varied reading abilities.
 
@@ -1187,7 +1195,7 @@ Rewrite the exact same text at three different reading levels: below grade level
         id: "curriculum-script-scaffolding", category: "Support & Scaffold", title: "Curriculum Script Scaffolding", sourcePath: "Lower School → Curriculum Differentiation & Scaffolding",
         bestFor: "Turning an abstract curriculum question into concrete stepping stones.",
         why: "Concrete prerequisite questions help students build toward abstract reasoning without watering down the main question.",
-        fields: [{id:"curriculum",label:"Curriculum or lesson source",placeholder:"e.g., Wit & Wisdom, Bridges, Fundations, textbook, department lesson"},{id:"question",label:"Question students need help reaching",placeholder:"Paste the abstract discussion question or essential question"},{id:"studentNeed",label:"Why students need scaffolding",placeholder:"e.g., abstract reasoning is hard; they need literal stepping stones first"}],
+        fields: [{id:"curriculum",label:"Curriculum or lesson source",placeholder:"e.g., Wit & Wisdom, Bridges, Fundations, textbook, department lesson"},{id:"question",label:"Question students need help reaching",placeholder:"Paste the abstract discussion question or essential question, or summarize it briefly",type:"textarea"},{id:"studentNeed",label:"Why students need scaffolding",placeholder:"e.g., abstract reasoning is hard; they need literal stepping stones first"}],
         followUp: "Make the scaffolding questions more sequential. Each question should prepare students logically for the next rather than merely simplify the original.",
         text: `I am teaching a lesson using {{curriculum}}. The curriculum script suggests this abstract discussion question: {{question}}.
 
@@ -1365,7 +1373,7 @@ Generate student-facing instructions for 3 distinct choices. For each option, pr
         id: "active-summarization", category: "Reflect & Communicate", title: "Active Summarization: 3-2-1 Processing Sheet", sourcePath: "World Languages → Memory & Retention Strategies",
         bestFor: "Helping students process a text through vocabulary, synthesis, and inquiry.",
         why: "A 3-2-1 structure turns summarizing into active processing: key words, sentence-level synthesis, and one deeper question.",
-        fields: [{id:"textType",label:"Text, audio, or transcript students will process",placeholder:"Paste or describe what students will read, hear, or watch"},{id:"language",label:"Language for sentence frames",placeholder:"e.g., English, chosen classroom language, bilingual, academic English"},{id:"focus",label:"Main processing focus",placeholder:"e.g., main idea, perspective, implication, evidence, vocabulary"}],
+        fields: [{id:"textType",label:"Text, audio, or transcript students will process",placeholder:"Paste the text/transcript if you have it, or briefly describe what students will read, hear, or watch",type:"textarea"},{id:"language",label:"Language for sentence frames",placeholder:"e.g., English, chosen classroom language, bilingual, academic English"},{id:"focus",label:"Main processing focus",placeholder:"e.g., main idea, perspective, implication, evidence, vocabulary"}],
         followUp: "Revise the sheet so the vocabulary, sentence frames, and inquiry question all point toward the same main idea rather than feeling like separate tasks.",
         text: `I am planning a lesson based on a text or transcript related to the topic described in my context.
 
@@ -1580,24 +1588,35 @@ Format it so I can copy/paste it into a document for editing.`
 
       if (!template) {
         $("templateIntro").textContent = "Choose a category and template to begin.";
+        $("selectedPromptBadge").classList.add("hidden");
         $("whyBox").classList.add("hidden");
         return;
       }
 
-      $("templateIntro").textContent = template.bestFor;
+      $("templateIntro").textContent = "Fill in the fields below so the copied prompt matches your actual classroom need.";
+      $("selectedPromptBadge").classList.remove("hidden");
+      $("selectedPromptBadge").innerHTML = `<span class="panel-kicker">Selected prompt</span><div class="mt-1 font-semibold text-slate-950">${template.title}</div><p class="mt-2 text-sm leading-6 text-slate-600">${template.bestFor}</p>`;
       $("whyBox").classList.remove("hidden");
-      $("whyBox").innerHTML = `<strong>Why this works:</strong> ${template.why}`;
+      $("whyBox").innerHTML = `<strong>Why this prompt works:</strong> ${template.why}`;
 
       template.fields.forEach(field => {
         const label = document.createElement("label");
         label.className = "block";
-        label.innerHTML = `
+        const storedValue = state.values[field.id] || "";
+        const isLongText = field.type === "textarea";
+        label.innerHTML = isLongText
+          ? `
           <span class="text-sm font-medium text-slate-800">${field.label}</span>
-          <input id="field-${field.id}" type="text" placeholder="Type a brief phrase..." class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm" value="${state.values[field.id] || ""}" />
+          <textarea id="field-${field.id}" rows="5" placeholder="Paste text here, or summarize briefly..." class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm">${storedValue}</textarea>
+          <span class="mt-1 block text-xs leading-5 text-slate-500">${field.placeholder}</span>
+        `
+          : `
+          <span class="text-sm font-medium text-slate-800">${field.label}</span>
+          <input id="field-${field.id}" type="text" placeholder="Type a brief phrase..." class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm" value="${storedValue}" />
           <span class="mt-1 block text-xs leading-5 text-slate-500">${field.placeholder}</span>
         `;
         form.appendChild(label);
-        label.querySelector("input").addEventListener("input", (event) => {
+        label.querySelector(isLongText ? "textarea" : "input").addEventListener("input", (event) => {
           state.values[field.id] = event.target.value;
           updatePreview();
         });
