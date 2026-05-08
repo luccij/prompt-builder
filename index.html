@@ -863,17 +863,25 @@ For each question, provide a clear stem, correct answer, 3 plausible distractors
       },
       {
         id: "rubric", category: "Assess & Respond", title: "Rubric Creation", sourcePath: "Material Generation → Assessment & Challenges",
-        bestFor: "Creating a single-point rubric for a project, performance task, or assignment.",
-        why: "A single-point rubric keeps attention on the target standard while leaving space for individualized comments about growth and extension.",
-        fields: [{id:"task",label:"Assignment or product being assessed",placeholder:"e.g., research paper, oral presentation, model, paragraph, lab report"},{id:"criteria",label:"What successful work should include",placeholder:"e.g., clear claim, relevant evidence, explanation, organization, accuracy"},{id:"tone",label:"Rubric language style",placeholder:"e.g., student-friendly, concise, standards-aligned, usable for revision"}],
-        followUp: "Review this rubric from a student’s perspective. Identify any criterion that a student might not know how to act on. Then revise the language so it points to visible evidence in the work.",
-        text: `I need to assess a student project on the topic described in my context.
+        bestFor: "Creating a rubric for a project, performance task, written response, presentation, or other student product.",
+        why: "A useful rubric makes expectations visible by naming the qualities of successful work in concrete, observable language. The format should serve the assignment rather than forcing every task into the same structure.",
+        fields: [{id:"task",label:"Assignment or product being assessed",placeholder:"e.g., research paper, oral presentation, model, paragraph, lab report"},{id:"criteria",label:"What successful work should include",placeholder:"e.g., clear claim, relevant evidence, explanation, organization, accuracy"},{id:"rubricFormat",label:"Preferred rubric format or structure",placeholder:"e.g., single-point rubric, 4-point analytic rubric, 5 categories, checklist, or no preference"},{id:"tone",label:"Rubric language style",placeholder:"e.g., student-friendly, concise, standards-aligned, usable for revision"}],
+        followUp: "Review this rubric from a student’s perspective. Identify any criterion that a student might not know how to act on. Then revise the language so it points to visible evidence in the work and fits the requested rubric format.",
+        text: `I need to assess student work on the topic described in my context.
 
-Task: {{task}}
-Criteria: {{criteria}}
+Assignment or product: {{task}}
+What successful work should include: {{criteria}}
+Preferred rubric format or structure: {{rubricFormat}}
 Tone or audience: {{tone}}
 
-Create a Single-Point Rubric with 3 columns: Areas for Growth, Target Standard, and Exceeding Expectations. Leave Areas for Growth and Exceeding Expectations blank for me to write in. Make the Target Standard student-friendly and behavior-based.`
+Create a rubric that fits this assignment and the requested format. If I specified a format, number of categories, point scale, or column structure, follow it. If I wrote "no preference" or left the format broad, choose the format that best fits the task and briefly explain why.
+
+Guidelines:
+- Use concrete, observable language rather than vague traits like "good" or "clear" without explanation.
+- Make the criteria specific enough to guide student revision.
+- Avoid overloading the rubric with too many categories.
+- If using performance levels, describe meaningful differences between levels rather than simply adding words like "some," "mostly," or "thoroughly."
+- Keep the language rigorous but student-friendly.`
       },
       {
         id: "exit-ticket", category: "Assess & Respond", title: "Exit Tickets", sourcePath: "Material Generation → Assessment & Challenges",
