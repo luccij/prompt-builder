@@ -1530,11 +1530,21 @@ Format it so I can copy/paste it into a document for editing.`
     function renderTemplates() {
       const wrap = $("templateList");
       const heading = $("templateListHeading");
+      const section = $("availablePromptsSection");
       wrap.innerHTML = "";
 
       const query = state.search.trim().toLowerCase();
       const searchPanel = $("searchPanel");
       if (searchPanel && query) searchPanel.open = true;
+
+      if (!state.categoryChosen && !query) {
+        section.classList.add("hidden");
+        heading.textContent = "Available prompts";
+        return;
+      }
+
+      section.classList.remove("hidden");
+
       const relevant = (query
         ? templates.filter(t => [t.title, t.bestFor, t.why, t.sourcePath, t.category].join(" ").toLowerCase().includes(query))
         : templates.filter(t => t.category === state.category)
