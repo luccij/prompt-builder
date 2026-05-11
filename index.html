@@ -205,13 +205,13 @@
     <section class="mb-6 px-1 text-sm" aria-label="How the prompt builder works">
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
         <span class="font-semibold text-slate-900">How it works:</span>
-        <span class="workflow-chip"><span class="workflow-number">1</span> Add broad class context</span>
+        <span class="workflow-chip"><span class="workflow-number">1</span> Add class context</span>
         <span class="workflow-arrow hidden lg:inline">→</span>
-        <span class="workflow-chip"><span class="workflow-number">2</span> Choose a teaching purpose</span>
+        <span class="workflow-chip"><span class="workflow-number">2</span> Choose a prompt</span>
         <span class="workflow-arrow hidden lg:inline">→</span>
-        <span class="workflow-chip"><span class="workflow-number">3</span> Fill in the useful details</span>
+        <span class="workflow-chip"><span class="workflow-number">3</span> Add details</span>
         <span class="workflow-arrow hidden lg:inline">→</span>
-        <span class="workflow-chip"><span class="workflow-number">4</span> Copy one complete prompt</span>
+        <span class="workflow-chip"><span class="workflow-number">4</span> Copy and paste</span>
       </div>
     </section>
 
@@ -285,7 +285,7 @@
           <div>
             <div class="panel-kicker">Step 3</div>
             <h2 class="text-lg font-semibold text-slate-950">Add a few useful details</h2>
-            <p id="templateIntro" class="mt-1 text-sm text-slate-600">Choose a purpose and prompt to begin.</p>
+            <p id="templateIntro" class="mt-1 text-sm text-slate-600">To begin, choose a teaching need and prompt in Step 2.</p>
             <p class="mt-2 text-xs leading-5 text-slate-500">Rough phrases are fine. You can edit the final prompt before pasting.</p>
           </div>
         </div>
@@ -326,7 +326,7 @@
               <div>
                 <div class="panel-kicker">Step 4</div>
                 <h2 class="text-lg font-semibold text-slate-950">Copy and paste</h2>
-                <p class="mt-1 text-sm text-slate-600">Review the full prompt, then paste it into your preferred AI tool.</p>
+                <p class="mt-1 text-sm text-slate-600">Review the full prompt below, click <strong>Copy Prompt</strong>, then paste it into your preferred AI tool.</p>
                 <p class="mt-2 text-sm leading-6 text-slate-600">The school has officially vetted <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 hover:text-blue-900">Google Gemini</a> and <a href="https://de.flintk12.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 hover:text-blue-900">Flint</a> and strongly recommends that you use one of those two tools.</p>
               </div>
             </div>
@@ -335,7 +335,7 @@
         </div>
 
         <div id="previewHelp" class="mt-4 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm leading-6 text-blue-950">
-          Your full prompt appears below. It may look long because it includes the shared school context and your selected task. Blank placeholders can be edited here or after pasting.
+          Your full prompt appears below. It may look long because it includes the shared school context and your selected task. Fill in any remaining placeholders before copying.
         </div>
 
         <textarea id="promptPreview" rows="22" class="preview-surface mt-4 w-full resize-y rounded-2xl border border-slate-700/70 p-4 font-mono text-xs leading-5 text-slate-50" readonly></textarea>
@@ -1605,7 +1605,7 @@ Format it so I can copy/paste it into a document for editing.`
       form.innerHTML = "";
 
       if (!template) {
-        $("templateIntro").textContent = "Choose a category and template to begin.";
+        $("templateIntro").textContent = "To begin, choose a teaching need and prompt in Step 2.";
         $("selectedPromptBadge").classList.add("hidden");
         $("whyBox").classList.add("hidden");
         return;
@@ -1738,9 +1738,9 @@ ${buildSelectedPrompt()}`;
       const blanks = findBlankPlaceholders($("promptPreview").value);
       const help = $("previewHelp");
       if (blanks.length) {
-        help.innerHTML = `Your full prompt appears below. It may look long because it includes the shared school context and your selected task. <strong>${blanks.length} placeholder${blanks.length === 1 ? "" : "s"}</strong> still need attention, but you can copy and edit them here or after pasting.`;
+        help.innerHTML = `Your full prompt appears below. It may look long because it includes the shared school context and your selected task. <strong>${blanks.length} placeholder${blanks.length === 1 ? "" : "s"}</strong> still need attention before copying.`;
       } else {
-        help.innerHTML = "Your prompt is ready to copy. It includes the shared school context plus your selected task.";
+        help.innerHTML = "Your prompt is ready. Click Copy Prompt, then paste it into Gemini, Flint, or another approved AI tool.";
       }
     }
 
