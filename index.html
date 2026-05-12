@@ -241,7 +241,7 @@
           <span class="mt-1 block text-xs leading-5 text-slate-500">e.g., 18 students, 2 sections of 15, small group of 6</span>
         </label>
         <label class="block">
-          <span class="text-sm font-medium text-slate-800">Class Context / Notes</span>
+          <span class="text-sm font-medium text-slate-800">Class Context / Notes <span class="font-normal text-slate-500">(optional, but helpful)</span></span>
           <textarea id="classContext" rows="2" placeholder="Type a sentence or short note..." class="mt-1 w-full resize-y rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm"></textarea>
           <span class="mt-1 block text-xs leading-5 text-slate-500">e.g., students know X but struggle with Y; high-energy group; needs more structure</span>
         </label>
@@ -1761,7 +1761,7 @@ ${buildSelectedPrompt()}`;
     }
 
     function isStep1Complete() {
-      return ["gradeSubject", "topic", "classSize", "classContext"].every(id => $(id).value.trim());
+      return ["gradeSubject", "topic", "classSize"].every(id => $(id).value.trim());
     }
 
     function isStep2Complete() {
