@@ -338,6 +338,10 @@
           Your full prompt appears below. It may look long because it includes the shared school context and your selected task. Fill in any remaining placeholders before copying.
         </div>
 
+        <div class="mt-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+          <strong>Teacher judgment matters:</strong> After the AI responds, review the output for accuracy, bias, privacy, and fit before using anything with students.
+        </div>
+
         <textarea id="promptPreview" rows="22" class="preview-surface mt-4 w-full resize-y rounded-2xl border border-slate-700/70 p-4 font-mono text-xs leading-5 text-slate-50" readonly></textarea>
 
         <div class="mt-4 space-y-2">
@@ -355,6 +359,11 @@
     </section>
   </main>
 
+  <footer class="mx-auto max-w-7xl px-4 pb-8 pt-2 text-xs leading-5 text-slate-500 sm:px-6 lg:px-8">
+    <div class="border-t border-slate-200 pt-4">
+      Prompt bank last updated: May 2026. This is a living faculty resource; review AI-generated output carefully before classroom use.
+    </div>
+  </footer>
 
   <script>
     const categories = [
@@ -1583,7 +1592,14 @@ Format it so I can copy/paste it into a document for editing.`
         button.type = "button";
         button.className = "template-button w-full rounded-2xl border border-slate-200 p-4 text-left hover:bg-slate-50";
         button.setAttribute("aria-pressed", String(state.templateChosen && template.id === state.templateId));
-        button.innerHTML = `<span class="block text-sm font-semibold">${template.title}</span><span class="mt-1 block text-xs leading-5 text-slate-500">${template.bestFor}</span>`;
+        const isSelected = state.templateChosen && template.id === state.templateId;
+        button.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <span class="block text-sm font-semibold">${template.title}</span>
+            ${isSelected ? '<span class="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[0.68rem] font-bold uppercase tracking-wide text-blue-800">Selected</span>' : ''}
+          </div>
+          <span class="mt-1 block text-xs leading-5 text-slate-500">${template.bestFor}</span>
+        `;
         button.addEventListener("click", () => {
           state.templateId = template.id;
           state.category = template.category;
@@ -1812,7 +1828,11 @@ ${buildSelectedPrompt()}`;
       try {
         await navigator.clipboard.writeText(text);
         const blanks = kind === "full" ? findBlankPlaceholders(text).length : 0;
-        status.textContent = blanks ? `Copied to clipboard with ${blanks} placeholder${blanks === 1 ? "" : "s"} still blank.` : "Copied to clipboard.";
+        status.textContent = blanks
+          ? `Copied with ${blanks} placeholder${blanks === 1 ? "" : "s"} still blank. Paste into Gemini or Flint, then review before using.`
+          : kind === "iteration"
+            ? "Follow-up prompt copied. Paste it after the AI gives its first response."
+            : "Prompt copied. Now paste it into Gemini or Flint.";
         flashCopied(button);
       } catch (error) {
         const fallbackBox = kind === "iteration" ? $("iterationPreview") : $("promptPreview");
@@ -1820,8 +1840,8 @@ ${buildSelectedPrompt()}`;
         fallbackBox.focus({ preventScroll: true });
         fallbackBox.select();
         status.textContent = kind === "iteration"
-          ? "Clipboard access was blocked. The follow-up prompt is selected so you can copy it manually."
-          : "Clipboard access was blocked. The prompt is selected so you can copy it manually.";
+          ? "Clipboard access was blocked. The follow-up prompt is selected. Press Cmd+C or Ctrl+C to copy it manually."
+          : "Clipboard access was blocked. The prompt is selected. Press Cmd+C or Ctrl+C to copy it manually.";
       }
 
       window.setTimeout(() => { status.textContent = ""; }, 3000);
