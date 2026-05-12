@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Generative AI Prompt Builder</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy-950: #07142f;
@@ -22,6 +25,7 @@
     }
 
     body {
+      font-family: "PT Sans", Arial, Helvetica, system-ui, sans-serif;
       background:
         radial-gradient(circle at top right, rgba(214, 164, 0, 0.10), transparent 28rem),
         radial-gradient(circle at top left, rgba(11, 61, 145, 0.08), transparent 24rem),
@@ -137,17 +141,19 @@
     .workflow-arrow { color: #94a3b8; }
 
     .panel-kicker {
+      font-family: "PT Sans", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       color: #5b6b83;
     }
 
     .title-font {
-      font-family: "Aptos Display", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-      letter-spacing: -0.035em;
-      line-height: 0.95;
+      font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      font-weight: 700;
     }
 
     .preview-surface {
@@ -168,10 +174,11 @@
     .primary-action:hover { background: linear-gradient(180deg, #0b3d91 0%, #082f70 100%); }
 
     .brand-kicker {
+      font-family: "PT Sans", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
       color: #0b3d91;
       font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
