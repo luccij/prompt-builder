@@ -7,9 +7,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --navy-950: #0f172a;
-      --navy-900: #0f1f3d;
-      --blue-700: #1d4ed8;
+      --navy-950: #07142f;
+      --navy-900: #0b2f6b;
+      --blue-700: #0b3d91;
+      --gold-500: #d6a400;
+      --gold-100: #fff7dc;
       --cyan-300: #67e8f9;
       --slate-50: #f8fafc;
       --slate-100: #f1f5f9;
@@ -21,17 +23,18 @@
 
     body {
       background:
-        radial-gradient(circle at top right, rgba(103, 232, 249, 0.12), transparent 28rem),
-        radial-gradient(circle at top left, rgba(29, 78, 216, 0.07), transparent 24rem),
-        linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
+        radial-gradient(circle at top right, rgba(214, 164, 0, 0.10), transparent 28rem),
+        radial-gradient(circle at top left, rgba(11, 61, 145, 0.08), transparent 24rem),
+        linear-gradient(180deg, #fbfaf6 0%, #eef4fb 100%);
     }
 
     .hero-sheen {
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(103,232,249,.16), transparent 18rem),
-        linear-gradient(135deg, rgba(255,255,255,.94) 0%, rgba(241,245,249,.88) 100%);
+        linear-gradient(90deg, rgba(11, 61, 145, .92) 0, rgba(11, 61, 145, .92) 0.45rem, transparent 0.45rem),
+        radial-gradient(circle at top right, rgba(214,164,0,.10), transparent 18rem),
+        linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(249,247,239,.90) 100%);
     }
 
     .hero-sheen::before {
@@ -39,11 +42,11 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      opacity: 0.36;
-      background-image: url("data:image/svg+xml,%3Csvg width='900' height='360' viewBox='0 0 900 360' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231d4ed8' stroke-width='1.4' stroke-opacity='.20'%3E%3Cpath d='M545 54h88c18 0 27 9 27 27v34c0 18 9 27 27 27h118'/%3E%3Cpath d='M590 222h74c18 0 27-9 27-27v-22c0-18 9-27 27-27h92'/%3E%3Cpath d='M490 142h115c16 0 24 8 24 24v18c0 16 8 24 24 24h112'/%3E%3Cpath d='M662 88h60'/%3E%3Cpath d='M724 208h78'/%3E%3Cpath d='M604 284h132c14 0 21-7 21-21v-18'/%3E%3C/g%3E%3Cg fill='%2367e8f9' fill-opacity='.45'%3E%3Ccircle cx='545' cy='54' r='4'/%3E%3Ccircle cx='660' cy='115' r='4'/%3E%3Ccircle cx='805' cy='142' r='4'/%3E%3Ccircle cx='490' cy='142' r='4'/%3E%3Ccircle cx='765' cy='208' r='4'/%3E%3Ccircle cx='590' cy='222' r='4'/%3E%3Ccircle cx='604' cy='284' r='4'/%3E%3Ccircle cx='757' cy='245' r='4'/%3E%3C/g%3E%3Cg stroke='%230f172a' stroke-opacity='.08'%3E%3Cpath d='M44 278h250M44 302h210M44 326h170'/%3E%3Crect x='38' y='250' width='282' height='92' rx='16' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg width='900' height='360' viewBox='0 0 900 360' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230b3d91' stroke-width='1.4' stroke-opacity='.20'%3E%3Cpath d='M545 54h88c18 0 27 9 27 27v34c0 18 9 27 27 27h118'/%3E%3Cpath d='M590 222h74c18 0 27-9 27-27v-22c0-18 9-27 27-27h92'/%3E%3Cpath d='M490 142h115c16 0 24 8 24 24v18c0 16 8 24 24 24h112'/%3E%3Cpath d='M662 88h60'/%3E%3Cpath d='M724 208h78'/%3E%3Cpath d='M604 284h132c14 0 21-7 21-21v-18'/%3E%3C/g%3E%3Cg fill='%23d6a400' fill-opacity='.45'%3E%3Ccircle cx='545' cy='54' r='4'/%3E%3Ccircle cx='660' cy='115' r='4'/%3E%3Ccircle cx='805' cy='142' r='4'/%3E%3Ccircle cx='490' cy='142' r='4'/%3E%3Ccircle cx='765' cy='208' r='4'/%3E%3Ccircle cx='590' cy='222' r='4'/%3E%3Ccircle cx='604' cy='284' r='4'/%3E%3Ccircle cx='757' cy='245' r='4'/%3E%3C/g%3E%3Cg stroke='%230f172a' stroke-opacity='.08'%3E%3Cpath d='M44 278h250M44 302h210M44 326h170'/%3E%3Crect x='38' y='250' width='282' height='92' rx='16' fill='none'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right center;
-      background-size: min(70%, 900px) auto;
+      background-size: min(58%, 780px) auto;
     }
 
     .hero-content {
@@ -67,19 +70,19 @@
     }
 
     .step-panel.active-step {
-      border-color: #93c5fd;
+      border-color: #7aa7e6;
       background: linear-gradient(180deg, rgba(248,251,255,0.98) 0%, rgba(255,255,255,0.94) 100%);
       box-shadow:
-        0 0 0 1px rgba(147, 197, 253, 0.30),
-        0 14px 34px rgba(37, 99, 235, 0.07);
+        0 0 0 1px rgba(122, 167, 230, 0.26),
+        0 14px 34px rgba(11, 61, 145, 0.07);
     }
 
     .template-button[aria-pressed="true"],
     .category-button[aria-pressed="true"] {
-      border-color: #60a5fa;
-      background: linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
-      color: #0f1f3d;
-      box-shadow: inset 0 0 0 1px rgba(96,165,250,.18);
+      border-color: #7aa7e6;
+      background: linear-gradient(180deg, #eff6ff 0%, #fffdf4 100%);
+      color: #07142f;
+      box-shadow: inset 0 0 0 1px rgba(122,167,230,.18);
     }
 
     .category-button,
@@ -101,8 +104,8 @@
       justify-content: center;
       flex: 0 0 auto;
       border-radius: 9999px;
-      background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 100%);
-      color: #1e3a8a;
+      background: linear-gradient(180deg, #dbeafe 0%, #fff7dc 100%);
+      color: #0b3d91;
       font-size: 0.82rem;
       font-weight: 700;
       box-shadow: inset 0 0 0 1px rgba(96,165,250,.20);
@@ -124,8 +127,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 9999px;
-      background: #eff6ff;
-      color: #1e40af;
+      background: #fff7dc;
+      color: #0b3d91;
       font-size: 0.72rem;
       font-weight: 700;
       box-shadow: inset 0 0 0 1px rgba(96,165,250,.18);
@@ -138,7 +141,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #64748b;
+      color: #5b6b83;
     }
 
     .title-font {
@@ -158,11 +161,26 @@
     }
 
     .primary-action {
-      background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+      background: linear-gradient(180deg, #0b4bb3 0%, #0b3d91 100%);
+      box-shadow: 0 8px 20px rgba(11, 61, 145, 0.20);
     }
 
-    .primary-action:hover { background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%); }
+    .primary-action:hover { background: linear-gradient(180deg, #0b3d91 0%, #082f70 100%); }
+
+    .brand-kicker {
+      color: #0b3d91;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-rule {
+      height: 3px;
+      width: 4.5rem;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #0b3d91, #d6a400);
+    }
 
     input, textarea, select {
       transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
@@ -178,27 +196,27 @@
 </head>
 <body class="min-h-screen text-slate-900">
   <header class="border-b border-slate-200/70 bg-white/70 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div class="hero-sheen rounded-3xl border border-slate-200/80 px-6 py-8 oracle-glow sm:px-8 sm:py-10">
-        <div class="hero-content flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div class="max-w-4xl"><h1 class="title-font text-4xl font-semibold text-slate-950 sm:text-6xl">Generative AI Prompt Builder</h1>
+    <div class="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+      <div class="hero-sheen rounded-3xl border border-slate-200/80 px-6 py-6 oracle-glow sm:px-8 sm:py-7">
+        <div class="hero-content flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+          <div class="max-w-3xl"><div class="brand-kicker">Dwight-Englewood Faculty Resource</div><div class="brand-rule mt-2"></div><h1 class="title-font mt-4 text-4xl font-semibold text-slate-950 sm:text-5xl">Generative AI Prompt Builder</h1>
 
-            <p class="mt-3 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
+            <p class="mt-3 max-w-3xl text-base leading-7 text-slate-600 sm:text-[1.05rem]">
               Build classroom-specific prompts from a guided template bank. Add context, choose a teaching goal, review the prompt, and copy it into your preferred AI tool.
             </p>
             <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
               The school has officially vetted <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 hover:text-blue-900">Google Gemini</a> and <a href="https://de.flintk12.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 hover:text-blue-900">Flint</a> and strongly recommends that you use one of those two tools.
             </p>
 
-            <div class="mt-4 max-w-3xl rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm leading-6 text-slate-700">
+            <div class="mt-3 max-w-3xl rounded-2xl border border-slate-200 bg-white/80 p-3.5 text-sm leading-6 text-slate-700">
               <strong class="text-slate-950">Important:</strong> This tool does not generate AI responses. It helps you build prompts to paste into your preferred AI tool. It uses no accounts, no saved history, no analytics, no AI API, and no persistent storage.
             </div></div>
 
           <div class="flex flex-col lg:max-w-md lg:self-stretch">
-            <div class="rounded-2xl border border-amber-200 bg-amber-50/95 p-4 text-sm leading-6 text-amber-950">
+            <div class="rounded-2xl border border-amber-300 bg-[var(--gold-100)]/95 p-3.5 text-sm leading-6 text-amber-950">
               <strong>Privacy reminder:</strong> Do not enter student names, grades, personal stories, or other personally identifiable information. Use placeholders instead.
             </div>
-            <div class="mt-5 flex justify-start lg:mt-auto lg:justify-end">
+            <div class="mt-4 flex justify-start lg:mt-auto lg:justify-end">
               <button id="getStartedBtn" type="button" class="primary-action rounded-2xl px-5 py-3 text-sm font-semibold text-white">Get Started</button>
             </div>
           </div>
@@ -367,7 +385,7 @@
 
   <footer class="mx-auto max-w-7xl px-4 pb-8 pt-2 text-xs leading-5 text-slate-500 sm:px-6 lg:px-8">
     <div class="border-t border-slate-200 pt-4">
-      Prompt bank last updated: May 2026. This is a living faculty resource; review AI-generated output carefully before classroom use.
+      Built as a faculty resource for Dwight-Englewood School. Prompt bank last updated: May 2026. Review AI-generated output carefully before classroom use.
     </div>
   </footer>
 
